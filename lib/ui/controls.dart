@@ -120,21 +120,28 @@ class _SteerPad extends StatefulWidget {
 class _SteerPadState extends State<_SteerPad> {
   double _x = 0;
 
+  void _update(Offset local) {
+    final w = (context.findRenderObject() as RenderBox).size.width;
+    setState(() {
+      _x = ((local.dx / w) * 2 - 1).clamp(-1.0, 1.0);
+      widget.state.input.steer = -_x; // drag left = steer left
+    });
+  }
+
+  void _release() {
+    setState(() {
+      _x = 0;
+      widget.state.input.steer = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onHorizontalDragUpdate: (d) {
-        setState(() {
-          _x = (_x + d.delta.dx / 90).clamp(-1.0, 1.0);
-          widget.state.input.steer = -_x; // drag left = steer left
-        });
-      },
-      onHorizontalDragEnd: (_) {
-        setState(() {
-          _x = 0;
-          widget.state.input.steer = 0;
-        });
-      },
+    return Listener(
+      onPointerDown: (e) => _update(e.localPosition),
+      onPointerMove: (e) => _update(e.localPosition),
+      onPointerUp: (_) => _release(),
+      onPointerCancel: (_) => _release(),
       child: Container(
         height: double.infinity,
         margin: const EdgeInsets.all(8),
@@ -189,16 +196,18 @@ class _PedalState extends State<_Pedal> {
     widget.onLevel(v);
   }
 
+  void _fromPointer(Offset local) {
+    final h = (context.findRenderObject() as RenderBox).size.height;
+    _set(((h - local.dy) / h).clamp(0.0, 1.0));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onVerticalDragUpdate: (d) {
-        _set((_level - d.delta.dy / 110).clamp(0.0, 1.0));
-      },
-      onVerticalDragEnd: (_) => _set(0),
-      onTapDown: (_) => _set(1),
-      onTapUp: (_) => _set(0),
-      onTapCancel: () => _set(0),
+    return Listener(
+      onPointerDown: (e) => _fromPointer(e.localPosition),
+      onPointerMove: (e) => _fromPointer(e.localPosition),
+      onPointerUp: (_) => _set(0),
+      onPointerCancel: (_) => _set(0),
       child: Container(
         width: 76,
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),

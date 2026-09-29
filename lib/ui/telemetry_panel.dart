@@ -96,7 +96,13 @@ class TelemetryPanel extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(label, style: _dim),
-            Text(value, style: _mono),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(value,
+                  style: _mono,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1),
+            ),
           ],
         ),
       );
