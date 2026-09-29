@@ -20,6 +20,7 @@ if [ ! -d "$BUNDLE_DIR" ]; then
   exit 1
 fi
 
+BUNDLE_DIR="$(cd "$BUNDLE_DIR" && pwd)"
 RPM_VERSION="$(printf '%s' "$VERSION" | tr '-' '~')"
 
 TOPDIR="$(mktemp -d)"
@@ -67,7 +68,7 @@ rpmbuild -bb \
   --define "pkg_version $RPM_VERSION" \
   --define "pkg_release $RELEASE" \
   --define "bundle_dir $BUNDLE_DIR" \
-  --define "icon_path $PWD/linux/carsim.png" \
+  --define "icon_path $(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/linux/carsim.png" \
   --define "_topdir $TOPDIR" \
   "$TOPDIR/SPECS/carsim.spec"
 
