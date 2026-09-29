@@ -21,6 +21,26 @@ car is modelled as a physical system rather than a lookup table:
 
 Runs on Android, iOS, Linux, macOS, Windows and web.
 
+![carsim](docs/screenshot.png)
+
+## Controls
+
+| Key | Action |
+|---|---|
+| W / Up | throttle |
+| S / Down | brake |
+| A / D or arrows | steer |
+| Space | handbrake |
+| C | clutch |
+| E / Q | shift up / down (manual) |
+| I | ignition |
+| M | auto / manual gearbox |
+| R | reset car |
+| P | pause |
+
+Touch layouts get an on-screen steering pad and analog pedals.
+
+
 ## Install
 
 | Platform | Package |
