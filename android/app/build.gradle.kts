@@ -1,8 +1,13 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
+
+val keyPropertiesFile = rootProject.file("key.properties")
+val releaseSigning = keyPropertiesFile.exists()
 
 android {
     namespace = "com.httpanimations.carsim"
@@ -25,11 +30,29 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        if (releaseSigning) {
+            val props = Properties()
+            keyPropertiesFile.inputStream().use { props.load(it) }
+            create("release") {
+                storeFile = rootProject.file(props["storeFile"] as String)
+                storePassword = props["storePassword"] as String
+                keyAlias = props["keyAlias"] as String
+                keyPassword = props["keyPassword"] as String
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            // Release builds must be signed with the upload key when
+            // key.properties is present (CI injects it); never ship a
+            // debug-signed release artifact.
+            if (releaseSigning) {
+                signingConfig = signingConfigs.getByName("release")
+            } else {
+                signingConfig = signingConfigs.getByName("debug")
+            }
         }
     }
 }
