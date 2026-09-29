@@ -2,5 +2,24 @@
   "name": "carsim",
   "identifier": "com.httpanimations.carsim",
   "sourceURL": "https://httpanimations.gitlab.io/carsim/altstore/apps.json",
-  "apps": []
+  "apps": [
+    {
+      "name": "carsim",
+      "bundleIdentifier": "com.httpanimations.carsim",
+      "developerName": "HttpAnimations",
+      "iconURL": "https://gitlab.com/HttpAnimations/carsim/-/raw/main/icon-1024.png",
+      "tintedIconURL": "https://gitlab.com/HttpAnimations/carsim/-/raw/main/icon-1024.png",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "date": "2026-09-29T18:40:48.073Z",
+          "downloadURL": "https://gitlab.com/api/v4/projects/HttpAnimations%2Fcarsim/packages/generic/release-assets/v0%2E1%2E0/carsim-ios-arm64-unsigned%2Eipa",
+          "size": 64688126468812,
+          "minOSVersion": "14.0"
+        }
+      ],
+      "appPermissions": {},
+      "screenshotURLs": []
+    }
+  ]
 }
