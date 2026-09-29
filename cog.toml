@@ -1,3 +1,5 @@
+ignore_merge_commits = true
+
 pre_bump_hooks = [
   "sed -i -E 's/^version:.*/version: {{version}}/' pubspec.yaml",
 ]
@@ -10,7 +12,7 @@ owner = "HttpAnimations"
 repository = "carsim"
 
 # Profile used by the CI auto-release job
-[profiles.ci]
+[bump_profiles.ci]
 pre_bump_hooks = [
   "sed -i -E 's/^version:.*/version: {{version}}/' pubspec.yaml",
 ]
