@@ -10,7 +10,6 @@ variables:
   GIT_CLEAN_FLAGS: "-ffdx"
 
 .github-common: &github-common
-  tags: [linux-truenas]
   image: alpine:3.19
   before_script:
     - apk add --no-cache bash curl jq git github-cli openssh-client
@@ -78,7 +77,6 @@ github-mr-build:
 
 auto-release:
   stage: release
-  tags: [linux-truenas]
   image: alpine:3.19
   resource_group: auto-release
   timeout: 30m
@@ -100,7 +98,6 @@ auto-release:
 
 github-release-sync:
   stage: release
-  tags: [linux-truenas]
   image: alpine:3.19
   resource_group: release-sync
   rules:
@@ -119,7 +116,6 @@ github-release-sync:
 
 pages:
   stage: release
-  tags: [linux-truenas]
   image: alpine:3.19
   resource_group: release-sync
   rules:
