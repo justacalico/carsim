@@ -1,13 +1,10 @@
 import 'package:carsim/app_state.dart';
-import 'package:carsim/main.dart';
-import 'package:carsim/sim/vec2.dart';
 import 'package:carsim/ui/controls.dart';
 import 'package:carsim/ui/dashboard.dart';
 import 'package:carsim/ui/engine_view.dart';
 import 'package:carsim/ui/settings_sheet.dart';
 import 'package:carsim/ui/sim_screen.dart';
 import 'package:carsim/ui/telemetry_panel.dart';
-import 'package:carsim/ui/track_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
