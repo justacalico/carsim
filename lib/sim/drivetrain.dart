@@ -94,8 +94,12 @@ class Drivetrain {
       _autoClutch = 1.0;
     }
 
-    if (auto && gear >= 0 && clutchPedal < 0.05 && outputOmega > 1.5) {
-      if (engineRpm > upshiftRpm &&
+    if (auto && gear >= 0 && clutchPedal < 0.05) {
+      if (gear == 0 && throttle > 0.05 && engineRpm > 700) {
+        // Pull away: engage first when the driver asks.
+        requestShift(1);
+      } else if (outputOmega > 1.5 &&
+          engineRpm > upshiftRpm &&
           gear < gearRatios.length &&
           gear > 0 &&
           lockedTime > 0.25) {
