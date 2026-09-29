@@ -193,19 +193,6 @@ void main() {
       s.car.step(0.0005, s.input);
     }
     s.telemetry = s.car.snapshot();
-    final panel = ChangeNotifierProvider.value(
-      value: s,
-      child: MaterialApp(
-        home: Scaffold(
-          body: Column(
-            children: [
-              SizedBox(height: 400, child: TelemetryPanel(state: s)),
-              Dashboard(state: s),
-            ],
-          ),
-        ),
-      ),
-    );
     Widget build() => ChangeNotifierProvider.value(
           value: s,
           child: MaterialApp(
