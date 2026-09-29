@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.2.0](https://gitlab.com/HttpAnimations/carsim/compare/84f79f3b6e456146001fd639549fdfdc42b0964a..v0.2.0) - 2026-09-29
+#### Features
+- AltStore 源接入 v0.1.0 - ([84f79f3](https://gitlab.com/HttpAnimations/carsim/commit/84f79f3b6e456146001fd639549fdfdc42b0964a)) - HttpAnimations
+#### Bug Fixes
+- 修正发布签名 key.properties 路径 - ([e583595](https://gitlab.com/HttpAnimations/carsim/commit/e583595f21f24d575848855229515ccccd91ec4b)) - HttpAnimations
+- 修正 ipa 文件大小 - ([5ad3043](https://gitlab.com/HttpAnimations/carsim/commit/5ad3043ce59ae3ac45324e1e0e16b3f1ad0fa8f8)) - HttpAnimations
+
+- - -
+
 ## [0.1.0](https://gitlab.com/HttpAnimations/carsim/compare/b4dd4996fc06b6a3cfa395310e3b5a71d26fc900..0.1.0) - 2026-09-29
 #### Features
 - 自动挡空挡自动升入一挡 - ([e4e7858](https://gitlab.com/HttpAnimations/carsim/commit/e4e78585c59beba036ee1fc10e6feda488816b59)) - HttpAnimations
