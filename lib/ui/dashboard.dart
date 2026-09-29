@@ -12,6 +12,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = state.telemetry;
     return Container(
+      height: 118,
       color: const Color(0xFF0B0D10),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(

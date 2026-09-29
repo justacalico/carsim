@@ -34,7 +34,7 @@ class AppState extends ChangeNotifier {
 
   /// Wind streak particles drawn around the car.
   final List<Vec2> particles = [];
-  final _particleRng = Random();
+  final _particleRng = Random(7);
 
   Telemetry? telemetry;
   Duration simTime = Duration.zero;

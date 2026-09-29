@@ -99,8 +99,10 @@ class _Toolbar extends StatelessWidget {
     return Container(
       color: const Color(0xFF0B0D10),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      child: Row(
-        children: [
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
           _btn(
             icon: state.input.ignition
                 ? Icons.power_settings_new
@@ -136,7 +138,6 @@ class _Toolbar extends StatelessWidget {
             label: '+',
             onTap: () => state.input.gearUp = true,
           ),
-          const Spacer(),
           _btn(
             icon: Icons.tune,
             label: 'SETUP',
@@ -146,7 +147,8 @@ class _Toolbar extends StatelessWidget {
               builder: (_) => SettingsSheet(state: state),
             ),
           ),
-        ],
+          ],
+        ),
       ),
     );
   }
