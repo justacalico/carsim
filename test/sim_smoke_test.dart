@@ -7,8 +7,12 @@ import 'package:carsim/sim/environment.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 double _wrapAngle(double a) {
-  while (a > pi) a -= 2 * pi;
-  while (a < -pi) a += 2 * pi;
+  while (a > pi) {
+    a -= 2 * pi;
+  }
+  while (a < -pi) {
+    a += 2 * pi;
+  }
   return a;
 }
 
