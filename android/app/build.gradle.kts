@@ -6,7 +6,7 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-val keyPropertiesFile = rootProject.file("key.properties")
+val keyPropertiesFile = rootProject.file("app/key.properties")
 val releaseSigning = keyPropertiesFile.exists()
 
 android {
@@ -35,7 +35,7 @@ android {
             val props = Properties()
             keyPropertiesFile.inputStream().use { props.load(it) }
             create("release") {
-                storeFile = rootProject.file(props["storeFile"] as String)
+                storeFile = file(props["storeFile"] as String)
                 storePassword = props["storePassword"] as String
                 keyAlias = props["keyAlias"] as String
                 keyPassword = props["keyPassword"] as String
